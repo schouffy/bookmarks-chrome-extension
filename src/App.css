@@ -1,0 +1,105 @@
+.App {
+  text-align: left;
+  user-select: none;
+}
+
+.search {
+  padding: 4px 8px;
+}
+
+input[type=text] {
+  background: url('search.svg') no-repeat 1px 3px;
+  background-size: 16px 16px;
+  border: 0px solid #cecece;
+  border-bottom-width:1px;
+  outline: none;
+  padding: 4px;
+  padding-left: 20px;
+  width: 446px;
+}
+
+ul {
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+ul ul {
+  padding-left: 10px;
+}
+
+li {
+  position:relative;
+}
+
+li:hover, div.folder:hover {
+  background-color: #ebebeb;
+}
+
+li, div.folder {
+  padding: 2px 14px 6px 8px;
+  height: 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+li > span, div.folder > span {
+  vertical-align: middle;
+}
+
+li .remove-bookmark, li .remove-confirm {
+  position:absolute;
+  top: 0px;
+  right: 0px;
+  visibility: hidden;
+  width: 20px;
+  height: 100%;
+}
+li:hover .remove-bookmark, li:hover .remove-confirm {
+  visibility: visible;
+}
+
+li .remove-bookmark {
+  background: url('trash.svg') no-repeat center;
+  background-size: 16px 16px;
+}
+
+li .remove-confirm {
+  background: url('check.svg') no-repeat center;
+  background-size: 18px 18px;
+  background-color:#ff6666;
+}
+
+li.hidden {
+  display:none;
+}
+
+ul.collapsed {
+  display: none;
+}
+ul.expanded {
+  display: block;
+}
+
+img {
+  height: 16px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+mark {
+  font-weight: bold;
+  background-color: transparent;
+}
+
+.empty {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  font-size: 80px;
+  color: #cecece;
+}

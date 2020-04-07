@@ -1,4 +1,5 @@
 /*global chrome*/
+/*global Brave*/
 
 class BookmarkData {
   constructor(title, url) {
@@ -17,9 +18,11 @@ class BookmarkFolderData {
 class DataProvider {
   static getBookmarks = callback => {
     if (chrome && chrome.bookmarks) {
-      chrome.bookmarks.getTree(function(bookmarks) {
-        // Move "other favorites" to "favorites bar" for better displaying
-        bookmarks[0].children[0].children.push(bookmarks[0].children[1]);
+      chrome.bookmarks.getTree(function (bookmarks) {
+        if (!Brave) {
+          // Chrome only : Move "other favorites" to "favorites bar" for better displaying
+          bookmarks[0].children[0].children.push(bookmarks[0].children[1]);
+        }
         // Return "favorites bar" as the root node
         callback(bookmarks[0].children[0].children);
       });
@@ -46,7 +49,7 @@ class DataProvider {
 
   static searchBookmarks = (filter, callback) => {
     if (chrome && chrome.bookmarks) {
-      chrome.bookmarks.search(filter, function(bookmarks) {
+      chrome.bookmarks.search(filter, function (bookmarks) {
         callback(bookmarks);
       });
       return;

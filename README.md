@@ -1,6 +1,6 @@
 # bookmarks-chrome-extension
 
-A tiny bookmarks extension for chrome available here :
+A tiny bookmarks extension for Chrome/Brave available here :
 https://chrome.google.com/webstore/detail/tiny-bookmarks/iegcdellenlkefldcoligpmfnnejcekj?hl=fr
 
 A popup that will display all your bookmarks (and let you filter them) so you can get rid of the top bar.
@@ -24,8 +24,15 @@ V1 2018-12-16
 - when opening in a new tab, make it non active
 - added ctrl + comma to open the popup
 
-V2
+V1.1
+- fix for brave/other bookmarks folder
+
+V1.2
 - keyboard navigation (up, down, enter,..)
+- fix width when expanding/collapsing (can't see remove icon)
+
+V2
+- auto backup on google drive
 
 V3
 - drag and drop to extension to add bookmark (if possible)

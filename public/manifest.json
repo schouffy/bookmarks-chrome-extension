@@ -1,6 +1,6 @@
 {
   "name": "Tiny Bookmarks",
-  "version": "0.2",
+  "version": "0.3",
   "description": "A popup that will display all your bookmarks (and let you filter them) so you can get rid of the top bar.",
   "permissions": ["bookmarks", "tabs", "chrome://favicon/"],
   "browser_action": {
@@ -29,6 +29,6 @@
       }
     }
   },
-  "manifest_version": 2,
+  "manifest_version": 3,
   "content_security_policy": "script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; object-src 'self'"
 }

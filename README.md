@@ -24,7 +24,7 @@ V1 2018-12-16
 - when opening in a new tab, make it non active
 - added ctrl + comma to open the popup
 
-V1.1
+V1.1 2020-04-07
 - fix for brave/other bookmarks folder
 
 V1.2
@@ -32,7 +32,7 @@ V1.2
 - fix width when expanding/collapsing (can't see remove icon)
 
 V2
-- auto backup on google drive
+- backup on google drive
 
 V3
 - drag and drop to extension to add bookmark (if possible)

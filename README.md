@@ -30,13 +30,13 @@ V1.1 2020-04-07
 V1.2
 - keyboard navigation (up, down, enter,..)
 - fix width when expanding/collapsing (can't see remove icon)
+- add "bookmarks manager" button
 
 V2
 - backup on google drive
 
 V3
 - drag and drop to extension to add bookmark (if possible)
-- add "bookmarks manager" button
 - add "bookmark current page" button
 
 V4

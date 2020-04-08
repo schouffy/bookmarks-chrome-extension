@@ -10,7 +10,7 @@ import Highlighter from "react-highlight-words";
 class Bookmark extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { removeClicked: false, removed: false };
+    this.state = { removeMouseOver: false, removeClicked: false, removed: false };
   }
 
   openUrl = e => {
@@ -34,7 +34,6 @@ class Bookmark extends React.Component {
 
   removeBookmark = (e) => {
     e.stopPropagation();
-    console.log("remove bookmarl");
     if (this.state.removeClicked) {
       if (chrome && chrome.tabs) {
         chrome.bookmarks.remove(this.props.id, () => {
@@ -51,6 +50,13 @@ class Bookmark extends React.Component {
     }
   }
 
+  mouseOverDelete = (e) => {
+    this.setState({ removeMouseOver: true, removeClicked: false });
+  }
+  mouseOutDelete = (e) => {
+    this.setState({ removeMouseOver: false, removeClicked: false });
+  }
+
   sanitize = (text) => {
     return text.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
   }
@@ -61,6 +67,11 @@ class Bookmark extends React.Component {
       : "chrome://favicon/" + this.props.url;
     let searchTerms = this.props.searchQuery.split(" ");
     let tooltip = this.props.title + "\n" + this.props.url;
+    let bookmarkRemoveClassName = "";
+    if (this.state.removeMouseOver && !this.state.removeClicked)
+      bookmarkRemoveClassName = " bookmark-remove-hover";
+    else if (this.state.removeClicked)
+      bookmarkRemoveClassName = " bookmark-remove-clicked";
     return (
       <li onClick={this.openUrl} title={tooltip} className={this.state.removed ? "hidden" : ""}>
         <img src={iconUrl} />
@@ -71,7 +82,11 @@ class Bookmark extends React.Component {
           sanitize={this.sanitize}
           textToHighlight={this.props.title}
         />
-        <div className={this.state.removeClicked ? "remove-confirm" : "remove-bookmark"} onClick={this.removeBookmark}></div>
+        <div className={ "bookmark-remove" + bookmarkRemoveClassName }>
+          <div className="bookmark-remove-prompt">Remove</div>
+          <div className="bookmark-remove-confirm">Are you sure?</div>
+          <div className={ "bookmark-remove-icon" + bookmarkRemoveClassName } onMouseOver={this.mouseOverDelete} onMouseOut={this.mouseOutDelete} onClick={this.removeBookmark}></div>
+        </div>
       </li>
     );
   }
@@ -171,7 +186,7 @@ class App extends Component {
             onChange={this.handleFilterChange}
             autoFocus={true} />
         </div>
-        <div className="empty" style={{ display: this.state.empty ? 'block' : 'none'}}>T_T</div>
+        <div className="empty" style={{ display: this.state.empty ? 'block' : 'none'}}>🤷‍♂️</div>
         <BookmarkFolder children={this.state.bookmarks} collapsed={false} searchQuery={this.state.filter} />
       </div>
     );

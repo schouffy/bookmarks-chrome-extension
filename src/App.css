@@ -49,27 +49,54 @@ li > span, div.folder > span {
   vertical-align: middle;
 }
 
-li .remove-bookmark, li .remove-confirm {
+li .bookmark-remove {
+  display:inline-block;
   position:absolute;
   top: 0px;
   right: 0px;
   visibility: hidden;
-  width: 20px;
   height: 100%;
 }
-li:hover .remove-bookmark, li:hover .remove-confirm {
+li:hover .bookmark-remove {
   visibility: visible;
 }
-
-li .remove-bookmark {
+.bookmark-remove-prompt, .bookmark-remove-confirm {
+  display: none;
+  color: white;
+  padding: 3px 6px 0px 6px;
+  vertical-align:top;
+  height: 100%;
+}
+.bookmark-remove-prompt {
+  background: #f34541;
+}
+.bookmark-remove-confirm {
+  background: #2392fe;
+}
+.bookmark-remove-hover .bookmark-remove-prompt  {
+  display: inline-block;
+}
+.bookmark-remove-clicked .bookmark-remove-confirm  {
+  display: inline-block;
+}
+li .bookmark-remove-icon {
+  display:inline-block;
   background: url('trash.svg') no-repeat center;
   background-size: 16px 16px;
+  height: 16px;
+  width: 16px;
+  height: 100%;
 }
 
-li .remove-confirm {
+li .bookmark-remove-icon.bookmark-remove-hover {
+  background-color:#f34541;
+  text-align: center;
+  color:white;
+}
+li .bookmark-remove-icon.bookmark-remove-clicked {
   background: url('check.svg') no-repeat center;
-  background-size: 18px 18px;
-  background-color:#ff6666;
+  background-color:#2392fe;
+  color:white;
 }
 
 li.hidden {

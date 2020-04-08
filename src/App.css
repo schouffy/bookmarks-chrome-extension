@@ -130,3 +130,12 @@ mark {
   font-size: 80px;
   color: #cecece;
 }
+
+.command-bar {
+  padding: 20px;
+  text-align: center;
+}
+
+.command-bar button {
+
+}

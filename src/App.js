@@ -176,6 +176,26 @@ class App extends Component {
       this.loadAllBookmarks();
   };
 
+  openBookmarksManager = (e) => {
+    console.log("open manager");
+    let bookmarksManagerUrl = "chrome://bookmarks";
+    if (chrome && chrome.tabs) {
+      if (e.ctrlKey) {
+        chrome.tabs.create({ url: bookmarksManagerUrl, active: false });
+      } else if (e.shiftKey) {
+        chrome.windows.create({
+          url: bookmarksManagerUrl
+        });
+      } else {
+        chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+          var tab = tabs[0];
+          chrome.tabs.update(tab.id, { url: bookmarksManagerUrl });
+        });
+        window.close();
+      }
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -188,6 +208,9 @@ class App extends Component {
         </div>
         <div className="empty" style={{ display: this.state.empty ? 'block' : 'none'}}>🤷‍♂️</div>
         <BookmarkFolder children={this.state.bookmarks} collapsed={false} searchQuery={this.state.filter} />
+        {/* <div className="command-bar">
+          <button onClick={this.openBookmarksManager}>Open bookmark manager</button>
+        </div> */}
       </div>
     );
   }

@@ -28,14 +28,15 @@ V1.1 2020-04-07
 - fix for brave/other bookmarks folder
 
 V1.2
-- keyboard navigation (up, down, enter,..)
+- improve delete UI
 - fix width when expanding/collapsing (can't see remove icon)
-- add "bookmarks manager" button
+- keyboard navigation (up, down, left/right (expand/collapse), enter, ctrl+enter, maj+enter, delete...)
 
 V2
 - backup on google drive
 
 V3
+- add "bookmarks manager" button
 - drag and drop to extension to add bookmark (if possible)
 - add "bookmark current page" button
 

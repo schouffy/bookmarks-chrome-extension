@@ -196,6 +196,15 @@ class App extends Component {
     }
   }
 
+  onKeyDown = (e) => {
+    
+    // up/down : find the currently focused item and go up/down
+    // enter: open the currently focused item (or expand/collapse if folder) + ctrl/maj variants
+
+    // https://stackoverflow.com/questions/42036865/react-how-to-navigate-through-list-by-arrow-keys
+    
+  }
+
   render() {
     return (
       <div className="App">

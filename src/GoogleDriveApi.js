@@ -1,3 +1,4 @@
+import GoogleDriveApiCredentials from "./GoogleDriveApiCredentials.js";
 /*global gapi*/
 /*global $*/
 
@@ -23,8 +24,8 @@ class GoogleDriveApi {
     // Get API key and client ID from API Console.
     // 'scope' field specifies space-delimited list of access scopes.
     gapi.client.init({
-        'apiKey': '',
-        'clientId': '',
+        'apiKey': GoogleDriveApiCredentials.ApiKey,
+        'clientId': GoogleDriveApiCredentials.Clientid,
         'discoveryDocs': [discoveryUrl],
         'scope': this.SCOPE
     }).then(() => {

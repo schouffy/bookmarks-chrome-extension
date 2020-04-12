@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 import folder from "./folder.svg";
 import "./App.css";
+import GoogleDriveApi from "./GoogleDriveApi.js";
 import DataProvider from "./Bookmarks.js";
 import {DebounceInput} from 'react-debounce-input';
 import Highlighter from "react-highlight-words";
@@ -153,10 +154,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { bookmarks: [], filter: "", empty: false };
+    this.googleDriveApi = new GoogleDriveApi();
   }
 
   componentDidMount = () => {
     this.loadAllBookmarks();
+    this.googleDriveApi.handleClientLoad();
   };
 
   loadAllBookmarks = () => {
@@ -205,6 +208,19 @@ class App extends Component {
     
   }
 
+  signIn = () => {
+    this.googleDriveApi.handleAuthClick();
+  }
+  pullSync = () => {
+    this.googleDriveApi.pullSync();
+  }
+  pushSync = () => {
+    this.googleDriveApi.pushSync();
+  }
+  revokeAccess = () => {
+    this.googleDriveApi.revokeAccess();
+  }
+
   render() {
     return (
       <div className="App">
@@ -217,9 +233,17 @@ class App extends Component {
         </div>
         <div className="empty" style={{ display: this.state.empty ? 'block' : 'none'}}>🤷‍♂️</div>
         <BookmarkFolder children={this.state.bookmarks} collapsed={false} searchQuery={this.state.filter} />
-        {/* <div className="command-bar">
-          <button onClick={this.openBookmarksManager}>Open bookmark manager</button>
-        </div> */}
+        <div className="command-bar">
+          {/* <button onClick={this.openBookmarksManager}>Open bookmark manager</button> */}
+
+          <button id="sign-in-or-out-button" onClick={this.signIn}>Sign In/Authorize</button>
+          <button onClick={this.pushSync}>push sync</button>
+          <button onClick={this.pullSync}>pull sync</button>
+          <button id="revoke-access-button"
+            onClick={this.revokeAccess}>Revoke access</button>
+    
+          <div id="auth-status" style={{"display": "inline", "paddingLeft": "25px"}}></div>
+        </div>
       </div>
     );
   }
